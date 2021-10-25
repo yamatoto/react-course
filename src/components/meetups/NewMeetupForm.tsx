@@ -6,7 +6,7 @@ import { MeetupType } from "../../models/MeetupType";
 const NewMeetupForm = ({
   onAddMeetup,
 }: {
-  onAddMeetup: (meetupData: MeetupType) => void;
+  onAddMeetup: (meetupData: Omit<MeetupType, "id">) => void;
 }) => {
   const titleInputRef = useRef<HTMLInputElement>(null);
   const imageInputRef = useRef<HTMLInputElement>(null);
@@ -19,7 +19,7 @@ const NewMeetupForm = ({
     const enteredImage = imageInputRef.current!.value;
     const enteredAddress = addressInputRef.current!.value;
     const enteredDescription = descriptionInputRef.current!.value;
-    const meetupData: MeetupType = {
+    const meetupData: Omit<MeetupType, "id"> = {
       title: enteredTitle,
       image: enteredImage,
       address: enteredAddress,

@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 const NewMeetupPage = () => {
   const history = useHistory();
 
-  function addMeetupHandler(meetupData: MeetupType) {
+  function addMeetupHandler(meetupData: Omit<MeetupType, "id">) {
     fetch(
       "https://react-getting-started-80a5c-default-rtdb.firebaseio.com/meetups.json",
       {
