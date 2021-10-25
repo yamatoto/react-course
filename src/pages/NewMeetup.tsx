@@ -1,7 +1,10 @@
 import NewMeetupForm from "../components/meetups/NewMeetupForm";
 import { MeetupType } from "../models/MeetupType";
+import { useHistory } from "react-router-dom";
 
 const NewMeetupPage = () => {
+  const history = useHistory();
+
   function addMeetupHandler(meetupData: MeetupType) {
     fetch(
       "https://react-getting-started-80a5c-default-rtdb.firebaseio.com/meetups.json",
@@ -13,8 +16,8 @@ const NewMeetupPage = () => {
         },
       }
     )
-      .then((res) => console.log(res))
-      .catch((err) => console.error(err));
+      .then(() => history.replace("/"))
+      .catch(console.error);
   }
 
   return (
