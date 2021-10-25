@@ -1,8 +1,13 @@
 import React, { useRef } from "react";
 import Card from "../ui/Card";
 import classes from "./NewMeetupForm.module.css";
+import { MeetupType } from "../../models/MeetupType";
 
-const NewMeetupForm = () => {
+const NewMeetupForm = ({
+  onAddMeetup,
+}: {
+  onAddMeetup: (meetupData: MeetupType) => void;
+}) => {
   const titleInputRef = useRef<HTMLInputElement>(null);
   const imageInputRef = useRef<HTMLInputElement>(null);
   const addressInputRef = useRef<HTMLInputElement>(null);
@@ -14,14 +19,13 @@ const NewMeetupForm = () => {
     const enteredImage = imageInputRef.current!.value;
     const enteredAddress = addressInputRef.current!.value;
     const enteredDescription = descriptionInputRef.current!.value;
-    const meetupData = {
+    const meetupData: MeetupType = {
       title: enteredTitle,
       image: enteredImage,
       address: enteredAddress,
       description: enteredDescription,
     };
-
-    console.log(meetupData);
+    onAddMeetup(meetupData);
   }
 
   return (
